@@ -1,0 +1,16 @@
+name: Branch naming check
+on:
+  workflow_call:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          if ! echo "$BRANCH" | grep -qE '^[fbt]/[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$'; then
+            echo "::error::Branch '$BRANCH' must match <type>/<issue-number>-<short-description> with type f|b|t (GitHub issue type)"
+            exit 1
+          fi
