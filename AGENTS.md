@@ -1,14 +1,18 @@
 # AGENTS.md
 
-## Branch naming
+AI agents MUST follow the organization's [contributing rules](CONTRIBUTING.md)
+exactly as a human contributor would. Read them first.
 
-Branches MUST match: `<type>/<issue-number>-<short-description>`
+The rules that apply to all contributors are defined in
+[CONTRIBUTING.md](CONTRIBUTING.md) — currently branch naming:
+`<type>/<issue-number>-<short-description>` with type `f|b|t` matching
+the GitHub issue type.
 
-- type: `f` (Feature) | `b` (Bug) | `t` (Task) — matches the GitHub issue type
-- issue-number: the GitHub issue number, e.g. `123` (not `#123`)
-- short-description: lowercase kebab-case, ≤ 5 words
+Additional guidance for agents:
 
-Examples: `f/123-add-login-form`, `b/456-crash-on-save`, `t/78-update-ci-runner`
-
-The branch type MUST match the issue's type. If the task has no issue
-yet, create one first and set its type before branching.
+- Before starting a task, check for an existing issue; if there is
+  none, create one and set its type before branching.
+- Derive the branch type from the issue type, not from your own
+  judgement of the work.
+- Reference the issue in the pull request with a closing keyword
+  (e.g. `Closes #123`).
