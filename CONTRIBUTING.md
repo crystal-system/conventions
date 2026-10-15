@@ -28,9 +28,14 @@ NOT use `Co-authored-by` trailers to credit an agent — GitHub turns
 those into contributor attribution.
 
 When a commit was made on behalf of the user by an AI agent, the
-commit message MUST end with the following footer line:
+commit message MUST end with a footer line in this format:
 
-    Assisted by An Agent.
+    Assisted by <Agent Name> - <model>
 
-This line is plain text, not a git trailer, so it creates no
-contributor attribution.
+For example:
+
+    Assisted by Mistral Vibe - mistral large
+
+The footer is plain text, not a git trailer, so it creates no
+contributor attribution. The agent name and model must be stated
+truthfully.

@@ -18,9 +18,10 @@ Additional guidance for agents:
 - Commit as the requesting user. Never set the agent as author or
   committer, and never add a `Co-authored-by` trailer for the agent.
 - When you make a commit on behalf of the user, end the commit
-  message with the footer line:
+  message with a footer line in this format:
 
-      Assisted by An Agent.
+      Assisted by <Agent Name> - <model>
 
-  Use exactly this wording. It is plain text, not a trailer, and
-  must be the last line of the commit message.
+  State your actual agent name and the model you run on, truthfully.
+  The footer is plain text, not a trailer, and must be the last line
+  of the commit message.
