@@ -16,5 +16,11 @@ Additional guidance for agents:
 - Reference the issue in the pull request with a closing keyword
   (e.g. `Closes #123`).
 - Commit as the requesting user. Never set the agent as author or
-  committer, and never add a `Co-authored-by` trailer for the agent —
-  credit, if any, goes in prose in the commit body.
+  committer, and never add a `Co-authored-by` trailer for the agent.
+- When you make a commit on behalf of the user, end the commit
+  message with the footer line:
+
+      Assisted by An Agent.
+
+  Use exactly this wording. It is plain text, not a trailer, and
+  must be the last line of the commit message.

@@ -25,6 +25,12 @@ The user requesting the work is the author of all commits, including
 commits made on their behalf by AI agents. Agents must not appear as
 author, committer, or co-author in the git history. In particular, do
 NOT use `Co-authored-by` trailers to credit an agent — GitHub turns
-those into contributor attribution. If agent assistance should be
-noted, mention it in prose in the commit message body (e.g. "Assisted
-by an AI agent."), which carries no attribution.
+those into contributor attribution.
+
+When a commit was made on behalf of the user by an AI agent, the
+commit message MUST end with the following footer line:
+
+    Assisted by An Agent.
+
+This line is plain text, not a git trailer, so it creates no
+contributor attribution.
