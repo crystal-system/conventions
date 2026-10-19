@@ -66,3 +66,33 @@ For example:
 The footer is plain text, not a git trailer, so it creates no
 contributor attribution. The agent name and model must be stated
 truthfully.
+
+## Skills
+
+Skills are reusable procedures for AI agents, stored in this
+repository as `skills/<name>/SKILL.md` and usable in every repository
+of the organization. They are organization-agnostic and can be used in
+any repository.
+
+To add a new skill:
+
+1. Create the directory `skills/<name>/SKILL.md`.
+2. Prefix the skill name with `cs-` — in both the directory name and
+   the `name` field of the frontmatter — so skills from this
+   organization cannot conflict with skills from other sources.
+3. Keep the skill generic: it must not mention this organization or
+   assume its repositories.
+4. Write the skill in simple technical English, as a procedure the
+   agent runs step by step.
+
+## Installing the skills
+
+Install the skills of this repository for your agents with one command:
+
+    npx skills add crystal-system/conventions -g -y
+
+The `-g` flag installs them at the user level, for every project, so
+nothing is added to or committed in the repositories you work on. The
+CLI detects the agents installed on your machine and installs the
+skills into each of them. Run `npx skills update` after changes to the
+skills to refresh your installation.
