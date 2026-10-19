@@ -66,3 +66,60 @@ For example:
 The footer is plain text, not a git trailer, so it creates no
 contributor attribution. The agent name and model must be stated
 truthfully.
+
+## Spec-driven development
+
+Every folder that contains code MUST have a `SPEC.md` file, and every
+change MUST keep the specifications consistent with the code.
+
+### SPEC.md
+
+`SPEC.md` defines **what the code in the folder must achieve** — the
+behavior, contracts, and invariants. It is written for the developers
+and agents who implement or modify the code. It does not describe how
+the code is implemented.
+
+Rules:
+
+- Every folder that contains code files MUST have a `SPEC.md` next to
+  them, describing what the code in that folder must do.
+- A `SPEC.md` MAY reference the `SPEC.md` files of its sub-folders to
+  compose the parent specification.
+- A large specification MAY be split into `<something>.SPEC.md` files
+  in the same folder. When it is, the folder's `SPEC.md` MUST
+  reference every `<something>.SPEC.md` file it is split into.
+- `SPEC.md` files MUST be written in English and use the template in
+  `templates/SPEC.md`.
+
+Templates live in [templates/](templates/).
+
+### Per-change rule
+
+Every change MUST include the specification updates that the change
+requires:
+
+- If the change alters what code in a folder achieves (new behavior,
+  changed contracts, new invariants), the folder's `SPEC.md` (or the
+  relevant `<something>.SPEC.md`) MUST be updated in the same pull
+  request.
+- If the change adds a folder that contains code files, the new
+  folder MUST get a `SPEC.md` in the same pull request.
+- If the change removes a folder, its `SPEC.md` and split spec files
+  are removed with it, and any references to them MUST be removed
+  from the parent `SPEC.md`.
+
+Specifications are validated on every pull request by a reusable
+workflow in this repository (`.github/workflows/spec-check.yml`).
+
+### README.md and AGENTS.md
+
+`README.md` (and `AGENTS.md` where present) document the code for its
+**users** — humans and agents who want to use the functionality. They
+answer *what the code does* and *how to use it*, never how it is
+implemented. They are not addressed to implementers.
+
+Rules:
+
+- `README.md` MUST explain what the code does and how to use it.
+- Implementation details MUST NOT appear in `README.md` or
+  `AGENTS.md`; they belong in `SPEC.md`.
