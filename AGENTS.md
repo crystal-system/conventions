@@ -5,8 +5,8 @@ exactly as a human contributor would. Read them first.
 
 The rules that apply to all contributors are defined in
 [CONTRIBUTING.md](CONTRIBUTING.md) — currently branch naming, commit
-messages (Conventional Commits with repository scopes), and commit
-authorship.
+messages (Conventional Commits with repository scopes), spec-driven
+development, and commit authorship.
 
 Additional guidance for agents:
 
@@ -16,6 +16,16 @@ Additional guidance for agents:
   judgement of the work.
 - Reference the issue in the pull request with a closing keyword
   (e.g. `Closes #123`).
+- Follow spec-driven development: before writing code, read the
+  `SPEC.md` of every folder you touch and the specs it references. If
+  your change alters what the code achieves, update the affected
+  `SPEC.md` (or `<something>.SPEC.md`) FIRST, in the same pull
+  request. Every folder you add that contains code files gets its
+  `SPEC.md` in the same pull request, using the template in
+  [templates/SPEC.md](templates/SPEC.md).
+- Keep `README.md` and `AGENTS.md` user-facing: they document what
+  the code does and how to use it, not how it is implemented.
+  Implementation details belong in `SPEC.md`.
 - Write commit messages in Conventional Commits format:
   `<type>(<scope>): <description>`, with types feat | fix | docs | ci |
   chore | refactor | test | perf. The scope is optional; if used, it
