@@ -1,0 +1,38 @@
+name: Spec and documentation check
+
+on:
+  workflow_call:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check SPEC.md and README.md presence
+        run: |
+          set -eu
+          status=0
+
+          # Collect folders that contain code files (anything that is
+          # not documentation itself).
+          code_folders=$(git ls-files | grep -vE '\.(md|txt|LICENSE)$' | xargs -r -n1 dirname | sort -u)
+
+          for folder in $code_folders; do
+            if [ ! -f "$folder/SPEC.md" ]; then
+              echo "::error file=$folder::Folder '$folder' contains code files but has no SPEC.md"
+              status=1
+            fi
+          done
+
+          if [ ! -f "README.md" ]; then
+            echo "::error::Repository root has no README.md"
+            status=1
+          fi
+
+          if [ "$status" -ne 0 ]; then
+            exit 1
+          fi

@@ -88,8 +88,8 @@ Rules:
 - A large specification MAY be split into `<something>.SPEC.md` files
   in the same folder. When it is, the folder's `SPEC.md` MUST
   reference every `<something>.SPEC.md` file it is split into.
-- `SPEC.md` files MUST be written in English and use the template in
-  `templates/SPEC.md`.
+- `SPEC.md` files MUST be written in simple technical English and use
+  the template in `templates/SPEC.md`.
 
 Templates live in [templates/](templates/).
 
@@ -121,5 +121,7 @@ implemented. They are not addressed to implementers.
 Rules:
 
 - `README.md` MUST explain what the code does and how to use it.
+- `README.md` and `AGENTS.md` MUST be written in simple technical
+  English.
 - Implementation details MUST NOT appear in `README.md` or
   `AGENTS.md`; they belong in `SPEC.md`.
