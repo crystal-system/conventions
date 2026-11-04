@@ -19,9 +19,9 @@ Additional guidance for agents:
 - Write commit messages in Conventional Commits format:
   `<type>(<scope>): <description>`, with types feat | fix | docs | ci |
   chore | refactor | test | perf. The scope is optional; if used, it
-  MUST be defined in the repository's `SCOPES.md`. If the task needs a
-  new scope, add it to `SCOPES.md` first (structure defined in
-  CONTRIBUTING.md).
+  MUST be defined in the repository's `scopes.yaml` (structure defined
+  in CONTRIBUTING.md). If the task needs a
+  new scope, add it to `scopes.yaml` first.
 - Commit as the requesting user. Never set the agent as author or
   committer, and never add a `Co-authored-by` trailer for the agent.
 - When you make a commit on behalf of the user, end the commit

@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/crystal-system/conventions/main/cs_conventions/scopes.schema.json
+description: >
+  A scope of this repository targets a top-level area of its codebase.
+  Scopes are added here as the codebase grows; a scope MUST be defined
+  in this file before it can be used in a commit message.
+scopes:
+  - name: docs
+    description: Contributing and agent guidance documents.
+  - name: skills
+    description: Reusable agent skills under skills/.
+  - name: scopes
+    description: The scopes.yaml file and its JSON Schema and validation tooling.
+  - name: ci
+    description: GitHub Actions workflows and reusable workflow definitions.
