@@ -1,0 +1,8 @@
+- id: cs-scopes
+  name: scopes.yaml schema check
+  description: Validates the repository's scopes.yaml against the organization JSON Schema.
+  entry: validate-scopes
+  language: python
+  files: ^scopes\.yaml$
+  pass_filenames: false
+  stages: [pre-commit, pre-push, manual]

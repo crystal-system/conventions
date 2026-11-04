@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: cs-scopes
+        name: scopes.yaml schema check
+        entry: python3 cs_conventions/validate_scopes.py
+        language: system
+        pass_filenames: false
+        files: ^scopes\.yaml$

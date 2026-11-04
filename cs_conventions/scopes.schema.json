@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/crystal-system/conventions/main/cs_conventions/scopes.schema.json",
+  "title": "scopes.yaml",
+  "description": "Structure of the repository-root scopes.yaml file that lists the scopes usable in Conventional Commits messages.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["description", "scopes"],
+  "properties": {
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "General description of what a scope of this repository can be - the dimensions or areas of the codebase that commits may target."
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "The scope identifier, lowercase kebab-case, as used in the commit message: <type>(<scope>): <description>."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Short description of what this scope covers."
+          }
+        }
+      },
+      "uniqueItems": true
+    }
+  }
+}

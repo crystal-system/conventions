@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cs-conventions-hooks"
+version = "0.1.0"
+description = "Pre-commit hooks of the crystal-system organization conventions"
+dependencies = [
+  "jsonschema>=4",
+  "pyyaml>=6",
+]
+
+[project.scripts]
+validate-scopes = "cs_conventions.validate_scopes:main"
+
+[tool.setuptools]
+packages = ["cs_conventions"]
+
+[tool.setuptools.package-data]
+cs_conventions = ["scopes.schema.json"]

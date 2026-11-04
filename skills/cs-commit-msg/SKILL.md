@@ -26,13 +26,15 @@ standard format and semantics are not repeated here.
    `feat` | `fix` | `docs` | `ci` | `chore` | `refactor` | `test` |
    `perf`.
 
-2. **Scope.** If a scope is used, it MUST be a `## <scope>` heading in
-   the repository's root `SCOPES.md` in the committed tree:
-   - If `SCOPES.md` does not exist, create it in this same commit with
-     the structure defined in CONTRIBUTING.md and a first
-     `## <scope>` section for your scope.
-   - If the scope is not listed, either add a `## <scope>` section in
-     this same commit or choose a scope that is already listed.
+2. **Scope.** If a scope is used, it MUST be listed under `scopes` in
+   the repository's root `scopes.yaml` in the committed tree:
+   - If `scopes.yaml` does not exist, create it in this same commit
+     with the structure defined in the organization's CONTRIBUTING.md
+     and a first entry for your scope.
+   - If the scope is not listed, either add an entry for it in this
+     same commit or choose a scope that is already listed.
+   - The file must conform to the organization's `scopes.schema.json`;
+     it is validated in CI and by the pre-commit hook.
 
 3. **Language.** The subject and body MUST be in simple technical
    English: short sentences, standard technical vocabulary, no idioms,
@@ -59,4 +61,4 @@ standard format and semantics are not repeated here.
   <base>`), then force-push with `--force-with-lease`.
 - **Merged branch:** the history is shared; do not rewrite it. Fix
   forward instead — if a scope was used that is missing from
-  `SCOPES.md`, add the `## <scope>` section in a follow-up commit.
+  `scopes.yaml`, add its entry in a follow-up commit.

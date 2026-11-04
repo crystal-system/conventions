@@ -31,20 +31,51 @@ Types: `feat` | `fix` | `docs` | `ci` | `chore` | `refactor` | `test` | `perf`
 ### Scope
 
 The scope is optional. If a scope is used, it MUST be one of the scopes
-defined in the repository's root file `SCOPES.md`. Using an undefined
-scope is not allowed — define it in `SCOPES.md` first, in the same or
+defined in the repository's root file `scopes.yaml`. Using an undefined
+scope is not allowed — define it in `scopes.yaml` first, in the same or
 an earlier commit.
 
-`SCOPES.md` structure:
+`scopes.yaml` has a fixed structure defined by the JSON Schema
+[`scopes.schema.json`](cs_conventions/scopes.schema.json) in this repository:
 
-    # Scopes
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/crystal-system/conventions/main/cs_conventions/scopes.schema.json
+    description: >
+      <general description of what a scope of this repository can be —
+      the dimensions or areas of the codebase that commits may target>
+    scopes:
+      - name: <scope>
+        description: <short description of what this scope covers>
 
-    <general description of what a scope of this repository can be —
-    the dimensions or areas of the codebase that commits may target>
+The scope names are lowercase kebab-case and unique. The file is
+validated automatically:
 
-    ## <scope>
+- In CI on every pull request, via the reusable workflow in this
+  repository (`.github/workflows/scopes.yml`). Reference it from the
+  repository's own workflow:
 
-    <short description of what this scope covers>
+      on: [pull_request]
+      jobs:
+        check:
+          uses: crystal-system/conventions/.github/workflows/scopes.yml@main
+
+- Locally with [pre-commit](https://pre-commit.com), which runs the
+  check at pre-commit and pre-push. Add to `.pre-commit-config.yaml`:
+
+      repos:
+        - repo: https://github.com/crystal-system/conventions
+          rev: <tag or commit of this repository>
+          hooks:
+            - id: cs-scopes
+
+- Manually with the validation script:
+
+      python cs_conventions/validate_scopes.py scopes.yaml
+
+  (requires `jsonschema` and `pyyaml`)
+
+The `# yaml-language-server:` modeline gives editor completion and
+validation via the YAML extension of VS Code and other
+yaml-language-server-based editors.
 
 ## Commit authorship
 
